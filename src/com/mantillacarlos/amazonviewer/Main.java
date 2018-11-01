@@ -21,7 +21,7 @@ public class Main {
 			System.out.println("0 - Salida");
 
 			// Leer la respuesta del usuario:
-			sc.nextInt();
+			exit = sc.nextInt();
 			switch (exit) {
 			case 1:
 				System.out.println("MOVIES: ");
