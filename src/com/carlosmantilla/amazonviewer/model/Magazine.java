@@ -18,5 +18,14 @@ public class Magazine extends Publication {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return  "\n :: MOVIE ::"+
+				"\n Tittle: " + getTittle() +
+				"\n Editorial: " + getEditorial() +
+				"\n Edition Date: " + getEditionDate();
+	}
 
 }
