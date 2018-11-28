@@ -34,7 +34,8 @@ public class Serie extends Film {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Tittle: " + getTittle() +
+		return  "\n :: SERIE ::"+
+				"\n Tittle: " + getTittle() +
 				"\n Year: " + getYear() +
 				"\n Creator: " + getCreator() +
 				"\n Duration: " + getDuration()+
