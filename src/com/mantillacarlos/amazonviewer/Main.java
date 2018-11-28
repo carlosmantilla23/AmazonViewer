@@ -1,10 +1,22 @@
 package com.mantillacarlos.amazonviewer;
 
+import java.util.Date;
 import java.util.Scanner;
+
+import com.carlosmantilla.amazonviewer.model.Movie;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		Movie movie = new Movie ("Coco", "Animation", "", 120, (short)2017);
+		System.out.println(movie.toString());
+		movie.showData();
+		//showMenu();
+
+	}
+
+	public static void showMenu() {
 
 		int exit = 0;
 		Scanner sc = new Scanner(System.in);
@@ -18,6 +30,8 @@ public class Main {
 			System.out.println("2 - Series");
 			System.out.println("3 - Books");
 			System.out.println("4 - Magazines");
+			System.out.println("5 - Report");
+			System.out.println("6 - Report Today");
 			System.out.println("0 - Salida");
 
 			// Leer la respuesta del usuario:
@@ -25,22 +39,104 @@ public class Main {
 			switch (exit) {
 			case 1:
 				System.out.println("MOVIES: ");
+				showMovies();
 				break;
 			case 2:
 				System.out.println("SERIES: ");
+				showSeries();
 				break;
 			case 3:
 				System.out.println("BOOKS: ");
+				showBooks();
 				break;
 			case 4:
 				System.out.println("MAGAZINES: ");
+				showMagazines();
+				break;
+			case 5:
+				System.out.println("REPORT: ");
+				makeReport();
+				break;
+			case 6:
+				System.out.println("REPORT TODAY: ");
+				Date date = new Date();
+				makeReport(date);
 				break;
 			default:
+				System.out.println(":::::SELECCIONA UNA OPCIÓN:::::");
 				break;
 			}
 
 		} while (exit != 0);
 
+	}
+
+	public static void showMovies() {
+
+		int exit = 0;
+
+		do {
+			System.out.println("");
+			System.out.println(":::MOVIES:::");
+			System.out.println("");
+		} while (exit != 0);
+
+	}
+
+	public static void showSeries() {
+
+		int exit = 0;
+
+		do {
+			System.out.println("");
+			System.out.println(":::SERIES:::");
+			System.out.println("");
+		} while (exit != 0);
+
+	}
+
+	public static void showBooks() {
+
+		int exit = 0;
+
+		do {
+			System.out.println("");
+			System.out.println(":::BOOKS:::");
+			System.out.println("");
+		} while (exit != 0);
+
+	}
+
+	public static void showMagazines() {
+
+		int exit = 0;
+
+		do {
+			System.out.println("");
+			System.out.println(":::MAGAZINES:::");
+			System.out.println("");
+		} while (exit != 0);
+
+	}
+
+	public static void showChapters() {
+
+		int exit = 0;
+
+		do {
+			System.out.println("");
+			System.out.println(":::CHAPTERS:::");
+			System.out.println("");
+		} while (exit != 0);
+
+	}
+	
+	public static void makeReport() {
+		
+	}
+	//Sobrecarga de método
+	public static void makeReport(Date date) {
+		
 	}
 
 }
