@@ -1,5 +1,6 @@
 package com.carlosmantilla.amazonviewer.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Movie extends Film implements IVisualizable {
@@ -47,11 +48,21 @@ public class Movie extends Film implements IVisualizable {
 	public void stopToSee(Date dateInicial, Date dateFinal) {
 		// TODO Auto-generated method stub
 
-		if (dateFinal.getSeconds() > dateInicial.getSeconds()) {
-			setTimeViewed(dateFinal.getSeconds() - dateInicial.getSeconds());
+		if (dateFinal.getTime() > dateInicial.getTime()) {
+			setTimeViewed((int)(dateFinal.getTime() - dateInicial.getTime()));
 		} else {
 			setTimeViewed(0);
 		}
+	}
+
+	public static ArrayList<Movie> makeMoviesList() {
+		ArrayList<Movie> movies = new ArrayList();
+		for (int i = 0; i < 5; i++) {
+			movies.add(
+					new Movie("La vida es bella" + i, "Drama" + i, "Carlos Carles" + i, 120 + i, (short) (1990 + i)));
+		}
+
+		return movies;
 	}
 
 }

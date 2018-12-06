@@ -1,5 +1,6 @@
 package com.mantillacarlos.amazonviewer;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,10 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Movie movie = new Movie ("Coco", "Animation", "", 120, (short)2017);
-		System.out.println(movie.toString());
-		movie.showData();
-		//showMenu();
+		showMenu();
 
 	}
 
@@ -35,10 +33,9 @@ public class Main {
 			System.out.println("0 - Salida");
 
 			// Leer la respuesta del usuario:
-			exit = sc.nextInt();
-			switch (exit) {
+			int response = sc.nextInt();
+			switch (response) {
 			case 1:
-				System.out.println("MOVIES: ");
 				showMovies();
 				break;
 			case 2:
@@ -73,12 +70,41 @@ public class Main {
 
 	public static void showMovies() {
 
-		int exit = 0;
-
+		int exit = 1;
+		ArrayList<Movie> movies = Movie.makeMoviesList();
 		do {
 			System.out.println("");
 			System.out.println(":::MOVIES:::");
 			System.out.println("");
+			for (int i = 0; i < movies.size(); i++) {
+				System.out.println(i+1 + ". " + movies.get(i).getTittle() +" "+ " Visto: "+ movies.get(i).isViewed());
+				
+			}
+			System.out.println("0. Regresar al menú");
+			System.out.println();
+			
+			Scanner sc = new Scanner (System.in);
+			int response = sc.nextInt();
+			
+			if (response == 0) {
+				showMenu();
+			}
+			
+			Movie movieSelected = movies.get(response-1);
+			movieSelected.setViewed(true);
+			Date dateI = movieSelected.startToSee(new Date());
+			
+			for (int i = 0; i < 10000; i++) {
+				System.out.println("...................................................");
+			}
+			//Terminar de verla
+			movieSelected.stopToSee(dateI, new Date());
+			System.out.println("");
+			System.out.println("");
+			System.out.println("Viste "+movieSelected);
+			System.out.println("Por "+movieSelected.getTimeViewed()/1000+" segundos");
+			//System.out.println("Estuviste viendo la peícula "+movies.get(i)+ "por: "+(movieSelected.getTimeViewed())/1000+" segundos");
+			
 		} while (exit != 0);
 
 	}
