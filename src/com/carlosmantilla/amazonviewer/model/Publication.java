@@ -4,30 +4,31 @@ import java.util.Date;
 
 public class Publication {
 	
-	private String tittle;
-	private Date editionDate;
+	private String title;
+	private Date edititionDate;
 	private String editorial;
-	private String[] autores;
-
-	public Publication(String tittle, Date editionDate, String editorial, String[] autores) {
+	private String[] authors;
+	
+	
+	public Publication(String title, Date edititionDate, String editorial) {
 		super();
-		this.tittle = tittle;
-		this.editionDate = editionDate;
+		this.title = title;
+		this.edititionDate = edititionDate;
 		this.editorial = editorial;
-		this.autores = autores;
 	}
 	
-	public String getTittle() {
-		return tittle;
+	
+	public String getTitle() {
+		return title;
 	}
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public Date getEditionDate() {
-		return editionDate;
+	public Date getEdititionDate() {
+		return edititionDate;
 	}
-	public void setEditionDate(Date editionDate) {
-		this.editionDate = editionDate;
+	public void setEdititionDate(Date edititionDate) {
+		this.edititionDate = edititionDate;
 	}
 	public String getEditorial() {
 		return editorial;
@@ -35,11 +36,11 @@ public class Publication {
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
-	public String[] getAutores() {
-		return autores;
+	public String[] getAuthors() {
+		return authors;
 	}
-	public void setAutores(String[] autores) {
-		this.autores = autores;
+	public void setAuthors(String[] authors) {
+		this.authors = authors;
 	}
 	
 	

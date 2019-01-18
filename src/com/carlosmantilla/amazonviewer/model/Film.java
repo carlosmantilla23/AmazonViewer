@@ -2,13 +2,22 @@ package com.carlosmantilla.amazonviewer.model;
 
 public class Film {
 	
-	
 	private String tittle;
 	private String genre;
 	private String creator;
 	private int duration;
 	private short year;
 	private boolean viewed;
+	
+	
+	
+	public Film(String tittle, String genre, String creator, int duration) {
+		super();
+		this.tittle = tittle;
+		this.genre = genre;
+		this.creator = creator;
+		this.duration = duration;
+	}
 	
 	public String getTittle() {
 		return tittle;
@@ -42,25 +51,17 @@ public class Film {
 	}
 	public String isViewed() {
 		String visto = "";
-		if (viewed == true) {
-			visto = "Si";
-		} else {
+		if(viewed == true) {
+			visto = "Sí";
+		}else {
 			visto = "No";
 		}
+		
 		return visto;
 	}
 	public void setViewed(boolean viewed) {
 		this.viewed = viewed;
 	}
-	
-	public Film(String tittle, String genre, String creator, int duration) {
-		super();
-		this.tittle = tittle;
-		this.genre = genre;
-		this.creator = creator;
-		this.duration = duration;
-	}
-	
 	
 
 }
