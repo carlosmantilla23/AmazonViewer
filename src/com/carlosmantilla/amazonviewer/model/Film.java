@@ -59,6 +59,11 @@ public class Film {
 		
 		return visto;
 	}
+	
+	public boolean getIsViewed() {
+		return viewed;
+	}
+	
 	public void setViewed(boolean viewed) {
 		this.viewed = viewed;
 	}
