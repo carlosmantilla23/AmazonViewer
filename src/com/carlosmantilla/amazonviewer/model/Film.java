@@ -1,6 +1,6 @@
 package com.carlosmantilla.amazonviewer.model;
 
-public class Film {
+public abstract class Film {
 	
 	private String tittle;
 	private String genre;
@@ -67,6 +67,8 @@ public class Film {
 	public void setViewed(boolean viewed) {
 		this.viewed = viewed;
 	}
+	
+	public abstract void view();
 	
 
 }
