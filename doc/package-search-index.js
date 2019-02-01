@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.carlosmantilla.amazonviewer.model"},{"l":"com.carlosmantilla.amazonviewer.util"},{"l":"com.mantillacarlos.amazonviewer"}]

@@ -12,11 +12,24 @@ import com.carlosmantilla.amazonviewer.model.Movie;
 import com.carlosmantilla.amazonviewer.model.Serie;
 import com.carlosmantilla.amazonviewer.util.AmazonUtil;
 
+/**
+ * <h1>Amazon Viewer</h1>
+ * AmazonViewer es un programa que permite visualizar Movies, Series con sus respetivos Chapters, Books y Magazines.
+ * <p>
+ * Existen algunas reglas como todos los elementos pueden ser visualizados o leídos
+ * a excepción de las Magazines, estas sólo pueden ser vistas a modo de exposición sin ser leídas.
+ * 
+ * @author carlosmantilla
+ * @version 1.1
+ * @since 2019
+ * 
+ * */
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 		showMenu();
 
 	}

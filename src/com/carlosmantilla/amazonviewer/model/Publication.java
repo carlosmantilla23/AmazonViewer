@@ -2,6 +2,13 @@ package com.carlosmantilla.amazonviewer.model;
 
 import java.util.Date;
 
+/**
+ * @author carlosmantilla
+ * @version 1.1
+ * @since 2019
+ * 
+ * */
+
 public class Publication {
 	
 	private String title;
