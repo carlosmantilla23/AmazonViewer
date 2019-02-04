@@ -1,4 +1,4 @@
-package com.mantillacarlos.amazonviewer;
+package com.carlosmantilla.amazonviewer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
