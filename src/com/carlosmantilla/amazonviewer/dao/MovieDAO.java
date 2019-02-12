@@ -25,7 +25,6 @@ public interface MovieDAO extends IDBConnection {
 				
 			
 			while (rs.next()) {
-				String titulo = rs.getString(TMOVIE_TITLE);
 				Movie movie = new Movie(rs.getString(TMOVIE_TITLE), rs.getString(TMOVIE_GENRE),
 						rs.getString(TMOVIE_CREATOR), Integer.valueOf(rs.getString(TMOVIE_DURATION)),
 						Short.valueOf(rs.getString(TMOVIE_YEAR)));
