@@ -4,13 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import com.anncode.makereport.Report;
+
 import com.carlosmantilla.amazonviewer.model.Book;
 import com.carlosmantilla.amazonviewer.model.Chapter;
 import com.carlosmantilla.amazonviewer.model.Magazine;
 import com.carlosmantilla.amazonviewer.model.Movie;
 import com.carlosmantilla.amazonviewer.model.Serie;
 import com.carlosmantilla.amazonviewer.util.AmazonUtil;
+import com.carlosmantilla.makereport.*;
 
 /**
  * <h1>Amazon Viewer</h1>
@@ -90,9 +91,10 @@ public class Main {
 		} while (exit != 0);
 	}
 
-	static ArrayList<Movie> movies = Movie.makeMoviesList();
+	static ArrayList<Movie> movies = new ArrayList<Movie>();
 
 	public static void showMovies() {
+		movies = Movie.makeMoviesList();
 		int exit = 1;
 
 		do {
@@ -251,7 +253,7 @@ public class Main {
 		Report report = new Report();
 		report.setNameFile("reporte");
 		report.setExtension("txt");
-		report.setTitle(":: VISTOS ::");
+		report.setTittle(":: VISTOS ::");
 		String contentReport = "";
 
 		for (Movie movie : movies) {
@@ -291,7 +293,7 @@ public class Main {
 
 		report.setNameFile("reporte" + dateString);
 		report.setExtension("txt");
-		report.setTitle(":: VISTOS ::");
+		report.setTittle(":: VISTOS ::");
 
 		SimpleDateFormat dfNameDays = new SimpleDateFormat("E, W MMM Y");
 		dateString = dfNameDays.format(date);

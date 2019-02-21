@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import static com.carlosmantilla.amazonviewer.db.Database.*;
 import com.carlosmantilla.amazonviewer.db.IDBConnection;
@@ -12,6 +13,17 @@ import com.carlosmantilla.amazonviewer.model.Movie;
 public interface MovieDAO extends IDBConnection {
 
 	default Movie setMovieViewed(Movie movie) {
+		try (Connection connection = connectToDB()) {
+			Statement statement = connection.createStatement();
+			String query = "INSERT INTO " + TVIEWED + " ( " + TVIEWED_IDMATERIAL + " , " + TVIEWED_IDELEMENT + " , "
+					+ TVIEWED_IDUSUARIO + " ) " + " VALUES(" + ID_TMATERIALS[0] + " , " + movie.getId() + " , "
+					+ TUSER_IDUSUARIO + ")";
+		if (statement.executeUpdate(query) > 0) { //Devuelve la cantidad de rows afectadas
+			System.out.println("Se marcó en visto");
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return movie;
 	}
 
@@ -42,8 +54,8 @@ public interface MovieDAO extends IDBConnection {
 
 	default boolean getMovieViewed(PreparedStatement preparedStatement, Connection connection, int id_movie) {
 		boolean viewedFlag = false;
-		String query = "SELECT * FROM " + TVIEWED + " WHERE " + TVIEWED_IDMATERIAL + "= ? " + " AND " + TVIEWED_IDELEMENT
-				+ "= ?" + " AND " + TVIEWED_IDUSUARIO + "= ?";
+		String query = "SELECT * FROM " + TVIEWED + " WHERE " + TVIEWED_IDMATERIAL + "= ? " + " AND "
+				+ TVIEWED_IDELEMENT + "= ?" + " AND " + TVIEWED_IDUSUARIO + "= ?";
 		ResultSet rs = null;
 		try {
 			preparedStatement = connection.prepareStatement(query);

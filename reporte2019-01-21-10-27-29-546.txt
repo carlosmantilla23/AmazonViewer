@@ -1,9 +1,0 @@
-Date: lun., 4 ene. 2019
-
-
-
- :: BOOK ::
- Title: Book 1
- Editorial: editorial 1
- Edition Date: Mon Jan 21 22:27:18 COT 2019
- Authors: 	author 0	author 1	author 2
