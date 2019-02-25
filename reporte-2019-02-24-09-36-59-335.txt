@@ -1,0 +1,27 @@
+Report date: dom, 24 feb 2019, 09:36:59 PM
+
+	:: VISTOS - dom, 24 feb 2019 ::
+
+
+ :: MOVIE ::
+ Title: Coco
+ Genero: Animación
+ Year: 2017
+ Creator: Pixart
+ Duration: 120
+
+
+ :: MOVIE ::
+ Title: Titanic
+ Genero: Drama
+ Year: 1997
+ Creator: James Cameron
+ Duration: 195
+
+
+ :: MOVIE ::
+ Title: Sombra del Agua
+ Genero: Drama-Fantasía
+ Year: 2017
+ Creator: Guillermo del Toro
+ Duration: 123

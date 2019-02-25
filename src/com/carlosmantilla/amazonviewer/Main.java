@@ -3,7 +3,7 @@ package com.carlosmantilla.amazonviewer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.Scanner;
 
 import com.carlosmantilla.amazonviewer.model.Book;
 import com.carlosmantilla.amazonviewer.model.Chapter;
@@ -11,26 +11,27 @@ import com.carlosmantilla.amazonviewer.model.Magazine;
 import com.carlosmantilla.amazonviewer.model.Movie;
 import com.carlosmantilla.amazonviewer.model.Serie;
 import com.carlosmantilla.amazonviewer.util.AmazonUtil;
-import com.carlosmantilla.makereport.*;
+import com.carlosmantilla.makereport.Report;
 
 /**
- * <h1>Amazon Viewer</h1>
- * AmazonViewer es un programa que permite visualizar Movies, Series con sus respetivos Chapters, Books y Magazines.
+ * <h1>Amazon Viewer</h1> AmazonViewer es un programa que permite visualizar
+ * Movies, Series con sus respetivos Chapters, Books y Magazines.
  * <p>
- * Existen algunas reglas como todos los elementos pueden ser visualizados o leídos
- * a excepción de las Magazines, estas sólo pueden ser vistas a modo de exposición sin ser leídas.
+ * Existen algunas reglas como todos los elementos pueden ser visualizados o
+ * leídos a excepción de las Magazines, estas sólo pueden ser vistas a modo de
+ * exposición sin ser leídas.
  * 
  * @author carlosmantilla
  * @version 1.1
  * @since 2019
  * 
- * */
+ */
 
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+
 		showMenu();
 
 	}
@@ -76,7 +77,14 @@ public class Main {
 				break;
 			case 6:
 				// Date date = new Date();
-				makeReport(new Date());
+				try {
+					Scanner sc = new Scanner(System.in);
+					System.out.print("Digite la fecha del reporte a generar en formato yyyy-MM-dd: ");
+					Date dateE = new SimpleDateFormat("yyyy-MM-dd").parse(sc.nextLine());
+					makeReport(dateE);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				exit = 1;
 				break;
 
@@ -120,7 +128,7 @@ public class Main {
 			if (response > 0) {
 				Movie movieSelected = movies.get(response - 1);
 				movieSelected.view();
-				
+
 			}
 
 		} while (exit != 0);
@@ -287,17 +295,26 @@ public class Main {
 	}
 
 	public static void makeReport(Date date) {
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-h-m-s-S");
-		String dateString = df.format(date);
+		
+		Date dateToday = new Date ();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh-m-ss-S");
+		String dateString = df.format(dateToday);
+		
 		Report report = new Report();
-
-		report.setNameFile("reporte" + dateString);
+		report.setNameFile("reporte-" + dateString);
 		report.setExtension("txt");
-		report.setTittle(":: VISTOS ::");
+		report.setTittle("\n\n\t:: VISTOS - " + new SimpleDateFormat("EEE, d MMM yyyy").format(date) + " ::");
 
-		SimpleDateFormat dfNameDays = new SimpleDateFormat("E, W MMM Y");
-		dateString = dfNameDays.format(date);
-		String contentReport = "Date: " + dateString + "\n\n\n";
+		SimpleDateFormat dfNameDays = new SimpleDateFormat("EE, d MMM Y, hh:mm:ss a");
+		dateString = dfNameDays.format(dateToday);
+		String contentReport = "Report date: " + dateString + report.getTittle();
+		
+		ArrayList<Movie> movies_date = new ArrayList<>();
+		  movies_date = Movie.makeMoviesListDate(date);
+		  
+		  for (Movie movie : movies_date) {
+		    contentReport += "\n\n" + movie;
+		  }
 
 		for (Movie movie : movies) {
 			if (movie.getIsViewed()) {

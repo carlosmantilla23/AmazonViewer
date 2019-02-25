@@ -84,6 +84,11 @@ public class Movie extends Film implements IVisualizable, MovieDAO {
 		
 		
 	}
+	
+	public static ArrayList<Movie> makeMoviesListDate(Date date) {
+		  Movie movie = new Movie();
+		  return movie.getMoviesViewedByDate(date);
+		}  
 
 	/**
 	 * {@inheritDoc}
@@ -96,7 +101,7 @@ public class Movie extends Film implements IVisualizable, MovieDAO {
 		movie.setMovieViewed(this);
 		Date dateI = startToSee(new Date());
 
-		for (int i = 0; i < 100000; i++) {
+		for (int i = 0; i < 100; i++) {
 			System.out.println("..........");
 		}
 
