@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.carlosmantilla.amazonviewer.model.Book;
 import com.carlosmantilla.amazonviewer.model.Chapter;
@@ -109,10 +110,13 @@ public class Main {
 			System.out.println();
 			System.out.println(":: MOVIES ::");
 			System.out.println();
+			
+			AtomicInteger atomicInteger = new AtomicInteger(1);
+			movies.forEach(m -> System.out.println(atomicInteger.getAndIncrement()+". "+m.getTittle() + " Visto: " + m.isViewed()));
 
-			for (int i = 0; i < movies.size(); i++) { // 1. Movie 1
-				System.out.println(i + 1 + ". " + movies.get(i).getTittle() + " Visto: " + movies.get(i).isViewed());
-			}
+//			for (int i = 0; i < movies.size(); i++) { // 1. Movie 1
+//				System.out.println(i + 1 + ". " + movies.get(i).getTittle() + " Visto: " + movies.get(i).isViewed());
+//			}
 
 			System.out.println("0. Regresar al Menu");
 			System.out.println();
