@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import com.carlosmantilla.amazonviewer.model.Book;
 import com.carlosmantilla.amazonviewer.model.Chapter;
@@ -273,24 +275,19 @@ public class Main {
 		.filter(m -> m.getIsViewed())
 		.forEach(m -> contentReport.append(m.toString()));
 		
-/*
-		for (Serie serie : series) {
-			ArrayList<Chapter> chapters = serie.getChapters();
-			for (Chapter chapter : chapters) {
-				if (chapter.getIsViewed()) {
-					contentReport += chapter.toString() + "\n";
+		//Predicate<Serie> seriesViewed = s -> s.getIsViewed();
+		Consumer<Serie> seriesEach = s -> {
+		ArrayList<Chapter> chapters  = s.getChapters();
+		chapters.stream().filter(c -> c.getIsViewed()).forEach(m -> contentReport.append(m.toString()));
+		};
+		
+		series.stream()
+		.forEach(seriesEach);
+		
+		books.stream()
+		.filter(b -> b.isReaded())
+		.forEach(b -> contentReport.append(b.toString()));
 
-				}
-			}
-		}
-
-		for (Book book : books) {
-			if (book.isReaded()) {
-				contentReport += book.toString() + "\n";
-
-			}
-		}
-*/
 		report.setContent(contentReport.toString());
 		report.makeReport();
 		System.out.println("Reporte Generado");
